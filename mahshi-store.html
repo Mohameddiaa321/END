@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>محشي ستور</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --green: #143B2E;
+    --green-deep: #0C2921;
+    --navy: #16233F;
+    --navy-deep: #0D1729;
+    --cream: #F3EEE2;
+    --paper: #FBF8F1;
+    --ink: #1A1712;
+    --gold: #C79A3D;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Tajawal', sans-serif;
+    line-height: 1.6;
+  }
+  .display{ font-family: 'Lalezar', sans-serif; letter-spacing: 0.5px; }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    background: var(--green);
+    color: var(--paper);
+    position: relative;
+    overflow: hidden;
+    padding: 64px 24px 90px;
+  }
+  .hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background-image: radial-gradient(circle at 15% 20%, rgba(199,154,61,0.10) 0, transparent 45%),
+                       radial-gradient(circle at 85% 80%, rgba(199,154,61,0.08) 0, transparent 45%);
+  }
+  .hero-inner{
+    max-width: 1080px;
+    margin: 0 auto;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap: 40px;
+    flex-wrap: wrap;
+    position: relative;
+  }
+  .hero-text{ max-width: 480px; flex: 1 1 320px; }
+  .hero-eyebrow{
+    color: var(--gold);
+    font-size: 1rem;
+    margin-bottom: 10px;
+  }
+  .hero h1{
+    font-size: clamp(3rem, 7vw, 5.2rem);
+    line-height: 0.95;
+    margin-bottom: 20px;
+  }
+  .hero p{
+    font-size: 1.15rem;
+    color: rgba(251,248,241,0.82);
+    max-width: 420px;
+  }
+  .hero-cta{
+    display:inline-block;
+    margin-top: 30px;
+    background: var(--gold);
+    color: var(--green-deep);
+    font-weight: 700;
+    padding: 14px 30px;
+    border-radius: 3px;
+    text-decoration:none;
+    font-size: 1.05rem;
+    transition: transform .15s ease;
+  }
+  .hero-cta:hover{ transform: translateY(-2px); }
+  .hero-shirt{ flex: 1 1 260px; display:flex; justify-content:center; }
+  .hero-shirt svg{ width: 260px; height: auto; filter: drop-shadow(0 20px 30px rgba(0,0,0,0.35)); }
+
+  /* ---------- INTRO STRIP ---------- */
+  .strip{
+    background: var(--gold);
+    color: var(--green-deep);
+    text-align:center;
+    font-weight: 700;
+    padding: 12px 16px;
+    font-size: 0.95rem;
+    letter-spacing: 0.3px;
+  }
+
+  /* ---------- PRODUCTS ---------- */
+  .products{
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 80px 24px 40px;
+  }
+  .section-head{
+    text-align:center;
+    margin-bottom: 50px;
+  }
+  .section-head h2{
+    font-size: clamp(2.2rem, 4vw, 3rem);
+    color: var(--green-deep);
+  }
+  .section-head p{
+    color: #5b5646;
+    margin-top: 8px;
+  }
+  .grid{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 32px;
+  }
+  .card{
+    background: var(--paper);
+    border: 1px solid rgba(20,59,46,0.12);
+    border-radius: 6px;
+    overflow: hidden;
+    display:flex;
+    flex-direction: column;
+    transition: box-shadow .2s ease, transform .2s ease;
+  }
+  .card:hover{
+    box-shadow: 0 14px 30px rgba(20,59,46,0.14);
+    transform: translateY(-4px);
+  }
+  .card-art{
+    background: var(--cream);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding: 36px 20px 20px;
+  }
+  .card-art svg{ width: 170px; height: auto; }
+  .card-body{
+    padding: 20px 22px 26px;
+    display:flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+  }
+  .card-body h3{
+    font-size: 1.4rem;
+    color: var(--green-deep);
+  }
+  .card-body .desc{
+    color: #5b5646;
+    font-size: 0.95rem;
+  }
+  .card-foot{
+    margin-top: auto;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap: 12px;
+    padding-top: 8px;
+  }
+  .price{
+    font-weight: 900;
+    font-size: 1.2rem;
+    color: var(--navy);
+  }
+  .order-btn{
+    background: var(--green-deep);
+    color: var(--paper);
+    text-decoration:none;
+    font-weight: 700;
+    font-size: 0.92rem;
+    padding: 10px 18px;
+    border-radius: 3px;
+    white-space: nowrap;
+    transition: background .15s ease;
+  }
+  .order-btn:hover{ background: var(--navy); }
+
+  /* ---------- HOW TO ORDER ---------- */
+  .howto{
+    background: var(--navy);
+    color: var(--paper);
+    padding: 70px 24px;
+    margin-top: 50px;
+  }
+  .howto-inner{
+    max-width: 900px;
+    margin:0 auto;
+    text-align:center;
+  }
+  .howto h2{
+    font-size: clamp(2rem, 4vw, 2.6rem);
+    margin-bottom: 14px;
+  }
+  .howto p{
+    color: rgba(251,248,241,0.78);
+    max-width: 520px;
+    margin: 0 auto 30px;
+  }
+  .steps{
+    display:flex;
+    gap: 22px;
+    justify-content:center;
+    flex-wrap: wrap;
+    text-align: right;
+  }
+  .step{
+    background: rgba(251,248,241,0.06);
+    border: 1px solid rgba(251,248,241,0.14);
+    border-radius: 6px;
+    padding: 22px;
+    max-width: 250px;
+    flex: 1 1 220px;
+  }
+  .step .step-title{
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+  .step p{ color: rgba(251,248,241,0.75); margin:0; font-size: 0.92rem; }
+  .whatsapp-big{
+    display:inline-flex;
+    align-items:center;
+    gap: 10px;
+    margin-top: 36px;
+    background: var(--gold);
+    color: var(--green-deep);
+    text-decoration:none;
+    font-weight: 700;
+    padding: 16px 32px;
+    border-radius: 3px;
+    font-size: 1.1rem;
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    text-align:center;
+    padding: 30px 24px;
+    color: #5b5646;
+    font-size: 0.85rem;
+    background: var(--cream);
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-eyebrow">تيشرتات مصرية بروح تانية</div>
+      <h1 class="display">محشي ستور</h1>
+      <p>تيشرت أبيض، قطعة محشي، وطعم مختلف. مجموعة محدودة بألوان هادية وطبعة محشي مميزة.</p>
+      <a href="#products" class="hero-cta">شوف المجموعة</a>
+    </div>
+    <div class="hero-shirt">
+      <svg viewBox="0 0 200 220" xmlns="http://www.w3.org/2000/svg">
+        <path d="M60 10 L20 35 L5 65 L30 80 L40 65 L40 205 C40 210 45 214 50 214 L150 214 C155 214 160 210 160 205 L160 65 L170 80 L195 65 L180 35 L140 10 C140 22 122 32 100 32 C78 32 60 22 60 10 Z" fill="#FBF8F1" stroke="#0C2921" stroke-width="3"/>
+        <text x="100" y="105" text-anchor="middle" font-family="Tajawal, sans-serif" font-weight="900" font-size="30" fill="#143B2E">محشي</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<div class="strip">توصيل لكل المحافظات • الطلب مباشر واتساب • رد سريع خلال دقايق</div>
+
+<section class="products" id="products">
+  <div class="section-head">
+    <h2 class="display">المجموعة</h2>
+    <p>تيشرت أبيض 100% قطن، بطبعة محشي، بألوان هادية.</p>
+  </div>
+
+  <div class="grid">
+
+    <div class="card">
+      <div class="card-art">
+        <svg viewBox="0 0 200 220" xmlns="http://www.w3.org/2000/svg">
+          <path d="M60 10 L20 35 L5 65 L30 80 L40 65 L40 205 C40 210 45 214 50 214 L150 214 C155 214 160 210 160 205 L160 65 L170 80 L195 65 L180 35 L140 10 C140 22 122 32 100 32 C78 32 60 22 60 10 Z" fill="#FFFFFF" stroke="#14231A" stroke-width="3"/>
+          <text x="100" y="105" text-anchor="middle" font-family="Tajawal, sans-serif" font-weight="900" font-size="28" fill="#143B2E">محشي</text>
+        </svg>
+      </div>
+      <div class="card-body">
+        <h3>محشي كلاسيك — أخضر غامق</h3>
+        <p class="desc">طبعة محشي باللون الأخضر الغامق، تيشرت أبيض قطن مريح لكل يوم.</p>
+        <div class="card-foot">
+          <span class="price">٢٥٠ ج.م</span>
+          <a class="order-btn" target="_blank" href="https://wa.me/201229570994?text=%D8%B9%D8%A7%D9%8A%D8%B2%20%D8%A3%D8%B7%D9%84%D8%A8%20%D8%AA%D9%8A%D8%B4%D8%B1%D8%AA%20%D9%85%D8%AD%D8%B4%D9%8A%20%D9%83%D9%84%D8%A7%D8%B3%D9%8A%D9%83%20-%20%D8%A3%D8%AE%D8%B6%D8%B1%20%D8%BA%D8%A7%D9%85%D9%82">اطلب واتساب</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-art">
+        <svg viewBox="0 0 200 220" xmlns="http://www.w3.org/2000/svg">
+          <path d="M60 10 L20 35 L5 65 L30 80 L40 65 L40 205 C40 210 45 214 50 214 L150 214 C155 214 160 210 160 205 L160 65 L170 80 L195 65 L180 35 L140 10 C140 22 122 32 100 32 C78 32 60 22 60 10 Z" fill="#FFFFFF" stroke="#0D1729" stroke-width="3"/>
+          <text x="100" y="105" text-anchor="middle" font-family="Tajawal, sans-serif" font-weight="900" font-size="28" fill="#16233F">محشي</text>
+        </svg>
+      </div>
+      <div class="card-body">
+        <h3>محشي كلاسيك — أزرق غامق</h3>
+        <p class="desc">نفس الطبعة بروح تانية، أزرق غامق هادي يناسب كل الأوكازيونات.</p>
+        <div class="card-foot">
+          <span class="price">٢٥٠ ج.م</span>
+          <a class="order-btn" target="_blank" href="https://wa.me/201229570994?text=%D8%B9%D8%A7%D9%8A%D8%B2%20%D8%A3%D8%B7%D9%84%D8%A8%20%D8%AA%D9%8A%D8%B4%D8%B1%D8%AA%20%D9%85%D8%AD%D8%B4%D9%8A%20%D9%83%D9%84%D8%A7%D8%B3%D9%8A%D9%83%20-%20%D8%A3%D8%B2%D8%B1%D9%82%20%D8%BA%D8%A7%D9%85%D9%82">اطلب واتساب</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-art">
+        <svg viewBox="0 0 200 220" xmlns="http://www.w3.org/2000/svg">
+          <path d="M60 10 L20 35 L5 65 L30 80 L40 65 L40 205 C40 210 45 214 50 214 L150 214 C155 214 160 210 160 205 L160 65 L170 80 L195 65 L180 35 L140 10 C140 22 122 32 100 32 C78 32 60 22 60 10 Z" fill="#FFFFFF" stroke="#3a3527" stroke-width="3"/>
+          <text x="100" y="100" text-anchor="middle" font-family="Tajawal, sans-serif" font-weight="900" font-size="26" fill="#143B2E">محشي</text>
+          <text x="100" y="128" text-anchor="middle" font-family="Tajawal, sans-serif" font-weight="700" font-size="14" fill="#16233F">ورق عنب</text>
+        </svg>
+      </div>
+      <div class="card-body">
+        <h3>محشي سبيشيال — طبعة مزدوجة</h3>
+        <p class="desc">طبعة "محشي" و"ورق عنب" باللونين الأخضر والأزرق الغامقين مع بعض.</p>
+        <div class="card-foot">
+          <span class="price">٢٨٠ ج.م</span>
+          <a class="order-btn" target="_blank" href="https://wa.me/201229570994?text=%D8%B9%D8%A7%D9%8A%D8%B2%20%D8%A3%D8%B7%D9%84%D8%A8%20%D8%AA%D9%8A%D8%B4%D8%B1%D8%AA%20%D9%85%D8%AD%D8%B4%D9%8A%20%D8%B3%D8%A8%D9%8A%D8%B4%D8%A7%D9%84%20-%20%D9%88%D8%B1%D9%82%20%D8%B9%D9%86%D8%A8">اطلب واتساب</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="howto">
+  <div class="howto-inner">
+    <h2 class="display">إزاي تطلب؟</h2>
+    <p>الطلب بسيط، من غير حسابات ولا تسجيل. كله من واتساب.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-title">1. اختار القطعة</div>
+        <p>شوف التيشرتات فوق واختار اللي عاجبك.</p>
+      </div>
+      <div class="step">
+        <div class="step-title">2. ابعت واتساب</div>
+        <p>دوس "اطلب واتساب" وابعت المقاس والعنوان.</p>
+      </div>
+      <div class="step">
+        <div class="step-title">3. استلم طلبك</div>
+        <p>هنأكد الطلب ونبعتلك في أقرب وقت للعنوان.</p>
+      </div>
+    </div>
+    <a class="whatsapp-big" target="_blank" href="https://wa.me/201229570994?text=%D8%B9%D8%A7%D9%8A%D8%B2%20%D8%A3%D8%B3%D8%A3%D9%84%20%D8%B9%D9%86%20%D8%AA%D9%8A%D8%B4%D8%B1%D8%AA%D8%A7%D8%AA%20%D9%85%D8%AD%D8%B4%D9%8A">تواصل معانا على واتساب</a>
+  </div>
+</section>
+
+<footer>
+  محشي ستور © 2026 — كل الحقوق محفوظة
+</footer>
+
+</body>
+</html>
